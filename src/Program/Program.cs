@@ -7,6 +7,19 @@ namespace PII_Herencia
     {
         static void Main(string[] args)
         {
+            Passanger pasajero1 = new Passanger("Rafael","Rodriguez","5014932-3");
+            Passanger pasajero2 = new Passanger("Estafano","Giusiano","5198049-5");
+            Passanger pasajero3 = new Passanger("Cristian","Velázquez","xxxxxxx-x");
+
+            Driver conductor1 = new Driver("Rafael","Rodriguez","5014932-3","Es un buen conductor");
+            Driver conductorPool1 = new Pool("Estafano","Giusiano","5198049-5","Manjea como Toreto",3);
+            UcuRideShare rideshare = new UcuRideShare();
+            rideshare.Add(conductor1);
+            rideshare.Add(conductorPool1);
+            rideshare.Add(pasajero1);
+            rideshare.Add(pasajero2);
+            rideshare.Add(pasajero3);
+            
             /*
             En éste método deberas mostrar un ejemplo de funcionamiento de tu programa an pseudocódigo. A continuación te 
             planteamos un ejemplo de como hacerlo. Esto no significa que te limites a hacer solamente esto, debes pensar 
