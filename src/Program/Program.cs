@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 
 namespace PII_Herencia
 {
@@ -13,12 +14,42 @@ namespace PII_Herencia
 
             Driver conductor1 = new Driver("Rafael","Rodriguez","5014932-3","Es un buen conductor");
             Driver conductorPool1 = new Pool("Estafano","Giusiano","5198049-5","Manjea como Toreto",3);
+            
             UcuRideShare rideshare = new UcuRideShare();
             rideshare.Add(conductor1);
             rideshare.Add(conductorPool1);
             rideshare.Add(pasajero1);
             rideshare.Add(pasajero2);
             rideshare.Add(pasajero3);
+
+
+            #region Reconocimiento Facial
+            CognitiveFace cog = new CognitiveFace("a36648d3c5134ab692acd35605d491f7", false);
+            cog.Recognize(@"bill.jpg");
+            FoundFace(cog);
+            cog.Recognize(@"bill2.jpg");
+            FoundFace(cog);
+            cog.Recognize(@"yacht.jpg");
+            FoundFace(cog);
+            static void FoundFace(CognitiveFace cog)
+        {
+            if (cog.FaceFound)
+            {
+                Console.WriteLine("Face Found!");
+                if (cog.SmileFound)
+                {
+                    Console.WriteLine("Found a Smile :)");
+                }
+                else
+                {
+                    Console.WriteLine("No smile found :(");
+                }
+            }
+            else
+                Console.WriteLine("No Face Found");
+        }
+            #endregion
+
             
             /*
             En éste método deberas mostrar un ejemplo de funcionamiento de tu programa an pseudocódigo. A continuación te 
