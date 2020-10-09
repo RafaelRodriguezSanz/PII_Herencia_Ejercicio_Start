@@ -17,8 +17,8 @@ namespace TwitterUCU
         /// </summary>
         readonly string _TwitterMessageAPI;
 
-        public TwitterMessage(string consumerKey, string consumerKeySecret, string accessToken, string accessTokenSecret, int limit = 280) 
-        : base (consumerKey,consumerKeySecret, accessToken,accessTokenSecret)
+        public TwitterMessage(string consumerKey, string consumerKeySecret, string accessToken, string accessTokenSecret, int limit = 280)
+        : base(consumerKey, consumerKeySecret, accessToken, accessTokenSecret)
         {
             this._TwitterMessageAPI = "https://api.twitter.com/1.1/direct_messages/events/new.json";
         }
@@ -39,7 +39,7 @@ namespace TwitterUCU
                     return response;
                 });
                 var rezTextJson = JObject.Parse(rezText.Result.Item2);
-                
+
                 if (rezText.Result.Item1 != 200)
                 {
                     try // return error from JSON
@@ -71,15 +71,15 @@ namespace TwitterUCU
             {
                 try
                 {
-                    string contentString = "{\"event\": {\"type\": \"message_create\", \"message_create\": {\"target\": {\"recipient_id\": \""+sendToUser+
-                    "\"}, \"message_data\": {\"text\": \""+text+"\"}}}}";
-                    
+                    string contentString = "{\"event\": {\"type\": \"message_create\", \"message_create\": {\"target\": {\"recipient_id\": \"" + sendToUser +
+                    "\"}, \"message_data\": {\"text\": \"" + text + "\"}}}}";
+
                     httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     httpClient.DefaultRequestHeaders.Add("Authorization", base.PrepareOAuth(_TwitterMessageAPI, null));
                     httpClient.BaseAddress = new Uri(_TwitterMessageAPI);
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
                     request.Content = new StringContent(contentString,
-                                    Encoding.UTF8, 
+                                    Encoding.UTF8,
                                     "application/json");
                     var httpResponse = await httpClient.SendAsync(request);
                     var httpContent = await httpResponse.Content.ReadAsStringAsync();
