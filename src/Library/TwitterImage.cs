@@ -37,7 +37,7 @@ namespace TwitterUCU
             string consumerKeySecret,
             string accessToken,
             string accessTokenSecret
-            ) : base (consumerKey,consumerKeySecret, accessToken,accessTokenSecret, 280)
+            ) : base(consumerKey, consumerKeySecret, accessToken, accessTokenSecret, 280)
         {
             _TwitterTextAPI = "https://api.twitter.com/1.1/statuses/update.json";
             _TwitterImageAPI = "https://upload.twitter.com/1.1/media/upload.json";
@@ -61,7 +61,7 @@ namespace TwitterUCU
                     return response;
                 });
                 var rezImageJson = JObject.Parse(rezImage.Result.Item2);
-                
+
                 if (rezImage.Result.Item1 != 200)
                 {
                     try // return error from JSON
@@ -83,7 +83,7 @@ namespace TwitterUCU
                     return response;
                 });
                 var rezTextJson = JObject.Parse(rezText.Result.Item2);
-                
+
                 if (rezText.Result.Item1 != 200)
                 {
                     try // return error from JSON
