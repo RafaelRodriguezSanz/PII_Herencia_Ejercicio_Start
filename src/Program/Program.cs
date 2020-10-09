@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Drawing;
+using CognitiveCoreUCU;
 
 namespace PII_Herencia
 {
